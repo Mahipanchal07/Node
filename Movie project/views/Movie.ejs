@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f4f4f4; 
+            color: #333; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        form {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        form input {
+            height: 40px;
+            width: 48%;
+            padding-left: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        form input[type="file"] {
+            width: 48%;
+            padding: 5px;
+        }
+        form input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .Movies_Container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 10px;
+        }
+        .MovieRow {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .MovieRow img {
+            height: 80px;
+            width: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .MovieRow h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .MovieRow h3 {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .MovieRow .Utilities a {
+            text-decoration: none;
+            color: #2196F3;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .MovieRow .Utilities a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <form action="/AddNewMovie" method="post" enctype="multipart/form-data">
+        <input type="text" name="MovieName" id="MovieName" placeholder="Enter Movie Name">
+        <input type="text" name="MovieRate" id="MovieRate" placeholder="Enter Movie Rating">
+        <input type="text" name="Actor" id="Actor" placeholder="Enter Actor Name">
+        <input type="file" name="MovieImage" id="MovieImage">
+        <input type="submit" value="Add Movie">
+    </form>
+
+    <h1 style="text-align: center;">Movies</h1>
+
+    <div class="Movies_Container">
+        <% Movies.map((movie) => { %>
+            <div class="MovieRow">
+                <img src="/Uploads/<%= movie.MovieImage %>" alt="<%= movie.MovieName %>">
+                <div>
+                    <h2><%= movie.MovieName %></h2>
+                    <h3>Rating: <%= movie.MovieRate %></h3>
+                    <h3>Actor: <%= movie.Actor %></h3>
+                </div>
+                <div class="Utilities">
+                    <a href="/DeleteMovie/<%= movie._id %>">Delete</a>
+                    <a href="/EditMovie/<%= movie._id %>">Edit</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Movie</title>
+    <style>
+        body {
+            background-color: #f4f4f4; 
+            color: #333; 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            width: 90%;
+            max-width: 500px;
+            height: 200px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        input {
+            height: 40px;
+            width: 48%;
+            padding-left: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/UpdateMovie/<%= Movie._id %>" method="post">
+        <input type="text" name="MovieName" id="MovieName" placeholder="Enter Movie name" value="<%= Movie.MovieName %>">
+        <input type="text" name="MovieRate" id="MovieRate" placeholder="Enter Rating of movie" value="<%= Movie.MovieRate %>">
+        <input type="text" name="Actor" id="Actor" placeholder="Enter Name of the actor" value="<%= Movie.Actor %>">
+        <input type="submit" value="Update Movie">
+    </form>
+</body>
+
+</html>
